@@ -1,0 +1,4 @@
+#!/bin/php
+<?php
+echo date("Y-m-d") . "\n" ;
+?>
