@@ -1,30 +1,75 @@
 <?php
+//$conn->close() ; in page script after any funcs using mysql execute
+
 # 'Library': function wrapper for routines used in pages
 # The purpose is to abstract details of back-end operations from the user.
 
 function dbconnect() {
-//require_once("credentials.php");
+require_once("cred.php");
         $conn= new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
                 die('<p class="error">Sorry!</p>') ;
                 echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
+        }
+        return $conn->connect_error ;
+}
+
+# validates the password server-side when creating a new user account
+function passwdcheck($password, $confirmpw) {
+        $regex = array("/[A-Z]/", "/[0-9]/", "/[a-z]/") ;
+        $minchar = 8 ;
+        if (strlen($password) >= $minchar && $password === $confirmpw) {
+                $valid = TRUE ;
+                foreach ($regex as $temp) {
+                        if (! preg_match($password, $temp)) {
+                                $valid = FALSE ;
+                        }
+                }
+                unset($temp) ;
+        }
+        else {
+                $valid = FALSE ;
+        }
+        return $valid ;
+}
+
+# adds user information to the database, formats and encrypts password
+# email is validated client-side, password is validated server-side
+function useradd($email, $password) {
+        if (passwdcheck($password)) {
                 return FALSE ;
         }
-        return $conn ;
-}
-
-function useradd($email, $password, $conn) {
-        $password = md5($password, TRUE) ;
-        $joindate = date("Y-m-d") ;
-        if (dbconnect()) {
+        if (dbconnect() !== FALSE) {
+                $password = md5(trim($password), TRUE) ;
+                $joindate = date("Y-m-d") ;
                 $mysqlstr = "INSERT INTO Users (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate})" ;
         }
+        return $conn->query($mysqlstr) ;
 }
 
-function dbsearch() {
+# query the database for results based on search terms in forms
+# a keyword search with one or more characters can be used for the business
+# the zip code must be set to obtain results
+function dbsearch($bname, $zip) {
+        if (dbconnect() !== FALSE) {
+                $mysql = "SELECT * FROM Zip WHERE Name = '{$zip}'" ;
+        }
+        if (isset($bname)) {
+                $term = preg_replace("/ /", "%", $bname) ;
+                $term = "%" . $term . "%" ;
+                $mysqlstr .= " AND Name LIKE '{$bname}'" ;
+        }
+        return $conn->query($mysqlstr) ;
 }
 
-function postreview() {
+# inserts record into the database when a user posts a review
+# js code in the page ensure correct data and that no forms are blank
+function postreview(...$inputs) {
+        // fix this: business data inserts into business but rating and haspublic go into review
+        $mysqlstr = "INSERT INTO"
+        foreach ($input as $temp) {
+                $mysqlstr .= "{$temp}, " ;
+        }
 }
 
 ?>

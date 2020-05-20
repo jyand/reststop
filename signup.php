@@ -8,11 +8,16 @@
         <header><h1>Create an Account</h1></header>
         <main>
                 <form method="POST" action="signup.php">
-                <p>Once you sign up you can start posting.</p>
+                <p>Password must contain at least:</p>
+                <ul><li><p>one lowercase letter</p></ul>
+                <p>one uppercase letter</p>
+                <p>one number</p></li>
+                <p>Any whitespace will  be ignored.</p>
                 <label for="create">
                         <input type="text">
                 </label>
                 </form>
+                <p>Once you sign up you can start posting.</p>
                 </br>
                 </br>
         </main>
