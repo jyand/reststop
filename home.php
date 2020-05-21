@@ -5,8 +5,6 @@
         <title>Home Page</title>
 </head>
 <?php
-require("logout.php") ;
-require("search.php") ;
 if (isset($_SESSION["user"])) {
         session_start() ;
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
