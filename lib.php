@@ -93,8 +93,8 @@ function postreview(...$inputs) {
                         $mysqlstr .= "'{$temp}', " ;
                 }
                 $mysqlstr .= "'NJ')" ;
+                $conn->query($mysqlstr) ;
         }
-        $conn->query($mysqlstr) ;
 }
 
 ?>
