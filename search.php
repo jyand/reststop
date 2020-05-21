@@ -31,10 +31,10 @@ else {
                 if ($result->num_rows > 0) {
                         foreach ($result as $row) {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']} Public Bathroom?: " ;
-                                $qry = "SELECT HasPublic from Review WHERE '{$row['BID']}' = 'Review.BID'" ;
+                                $qry = "SELECT * from Review WHERE '{$row['BID']}' = 'Review.BID'" ;
                                 $review = $conn->query($qry) ;
-                                $bool = $review->fetch_row() ;
-                                switch($bool[0]){
+                                $bool = $review->fetch_assoc() ;
+                                switch($bool['HasPublic']){
                                 case 0:
                                         echo "NO</p>" ;
                                 case 1:
