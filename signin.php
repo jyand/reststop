@@ -31,8 +31,8 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
         $result = $conn->query($mysqlstr) ;
         if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc() ;
-                session_start() ;
-                $_SESSION["UID"] = $row["UID"] ;
+#                session_start() ;
+#                $_SESSION["UID"] = $row["UID"] ;
                 header("Location: home.php") ;
         }
         else {
