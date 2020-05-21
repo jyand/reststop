@@ -7,14 +7,14 @@ if ($conn->connect_error) {
 }
 else {
         if(isset($_GET["zip"])) {
-                $mysql = "SELECT * FROM Zip WHERE Zip = '{$_GET['zip']}'" ;
+                $mysqlstr = "SELECT * FROM Zip WHERE Zip = '{$_GET['zip']}'" ;
                 if(isset($_GET["bname"])) {
                         $word = addslashes($_GET["bname"]) ;
                         $term = preg_replace("/ /", "%", $word) ;
                         $term = "%" . $term . "%" ;
                         $mysqlstr .= " AND Name LIKE '{$word}'" ;
                 }
-                $conn->query($mysqlstr) ;
+                $results = $conn->query($mysqlstr) ;
                 if ($results->num_rows > 0) {
                         while ($row = $results->fetch_asssoc()) {
                                 echo "<p>Public Bathroom?: {$row['HasPublic']} Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
