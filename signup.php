@@ -7,15 +7,17 @@
 <body>
         <nav><ul>
                 <a href="signin.php">Sign In</a>
-        </ul></nav></br>       
+        </ul></nav>       
 <?php
 require("lib.php") ;
 $added = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
-if ($added === TRUE) {
-        echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
-}
-else {
-        echo "<p>Sorry, please try again.</p>" ;
+if (isset($added)){
+        if ($added === TRUE) {
+                echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
+        }
+        else {
+                echo "<p>  Sorry, please try again.</p>" ;
+        }
 }
 ?>
         <header><h1>Create an Account</h1></header>
