@@ -33,13 +33,8 @@ else {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']} Public Bathroom?: " ;
                                 $qry = "SELECT * from Review WHERE '{$row['BID']}' = 'Review.BID'" ;
                                 $review = $conn->query($qry) ;
-                                $bool = $review->fetch_assoc() ;
-                                switch($bool["HasPublic"]){
-                                case 0:
-                                        echo "NO</p>" ;
-                                case 1:
-                                        echo "YES</p>" ;
-                                }
+                                $bool = $review->fetch_row() ;
+                                echo "{$bool[2]}</p>" ;
                         }
                 }
                 else {
