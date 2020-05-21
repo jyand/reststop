@@ -11,9 +11,11 @@ if (isset($_SESSION["user"])) {
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
 }
 else {
+# if this page is accessed without a valid login session, it redirects to the sign-in page
         header("Location: signin.php") ;
         die() ;
 }
+# logged-in users are allowed to register data via forms
 if (isset($_POST["name"]) && isset($_POST["addr"]) && isset($_POST["city"]) && isset($_POST["zipcode"])) {
         postreview($_POST["name"], $_POST["addr"], $_POST["city"], $_POST["zipcode"]) ;
 }
@@ -22,7 +24,7 @@ if (isset($_POST["name"]) && isset($_POST["addr"]) && isset($_POST["city"]) && i
 	<form action="logout.php" method="POST">
 		<input type="submit" value="logout" />
 	</form></br></br>
-        <h1>Help others find a public bathroom by contributing:</h1>
+        <header><h1>Help others find a public bathroom by contributing:</h1></header>
 	<form action="" method="POST">
 		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool" value="1"/></p>
 		<p>Name of Store: <input type="text" id="name" name="name"/></p>
@@ -32,7 +34,7 @@ if (isset($_POST["name"]) && isset($_POST["addr"]) && isset($_POST["city"]) && i
                 <p><input type="submit" id="click" name="click" value="Submit a review!"></p>
 	</form>
 <script type="text/javascript">
-// checks for valid zip code input
+// checks for valid zip code input on search
 function validform(){
         var z = document.forms["search"]["zip"].value ;
         if (z > 99999 || z < 0) {
@@ -46,7 +48,7 @@ function validform(){
                 <form name="search" method="GET" action="search.php" onsubmit="return validform()">
                 <label for="search">
                         <p>Store: <input type="text" id="bname" name="bname">
-                        Zip Code: <input type="text" id="zip" name="zip"></p>
+                        Zip Code: <input type="number" id="zip" name="zip"></p>
                         <p><input type="submit" value="search your location"></p>
                 </label>
                 </form></br>

@@ -16,6 +16,7 @@ if ($conn->connect_error) {
         die('<p class="error">Sorry!</p>') ;
         echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
 }
+# Queries the database for matching login info, starts a session if signing in is successful, redirects to the priveleged home page
 if (isset($_POST["password"]) && isset($_POST["email"])) {
         $webuser = $_POST["email"];
         $key = md5(trim($_POST["password"])) ;
@@ -30,6 +31,7 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
                 die() ;
         }
         else {
+# shows an error page if not successful
                 die("<p>Please enter valid login credentials.</p>") ;
         }
 }

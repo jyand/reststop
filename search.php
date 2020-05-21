@@ -18,10 +18,9 @@ if ($conn->connect_error) {
 }
 else {
         if(isset($_GET["zip"])) {
-
-                # Join tables to append the HasPublic (bathroom) boolean value to the results
+# MySQL query for zip code, takes priority over store name since it is manadtory
                 $mysqlstr = "SELECT * FROM Business WHERE Zip = '{$_GET['zip']}'" ;
-                # the name field uses MySQL wildcards for all entries containing all words separated by spaces in the search term
+# the name field uses MySQL wildcards for all entries containing all words separated by spaces in the search term
                 if(isset($_GET["bname"])) {
                         $word = addslashes($_GET["bname"]) ;
                         $term = preg_replace("/ /", "%", $word) ;
@@ -30,6 +29,7 @@ else {
                 }
                 $result = $conn->query($mysqlstr) ;
                 if ($result->num_rows > 0) {
+# Prints name and address from query results, each on one line
                         foreach ($result as $row) {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
                         }

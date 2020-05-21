@@ -63,7 +63,6 @@ include_once("cred.php");
 }
 
 # inserts record into the database when a user posts a review
-# js code in the page ensures correct data
 # the html forms are all required so this ensures that no forms are blank
 function postreview($name, $address, $city, $zip) {
         require_once("cred.php");

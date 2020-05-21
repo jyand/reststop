@@ -16,6 +16,7 @@ if (isset($_POST["click"])) {
         if ($added === TRUE) {
                 echo "<ul><a href=\"signin.php\">User account successfully created! Click here to sign in.</a></ul>" ;
         }
+# Error message is shown on the same page
         else {
                 echo "<p>  Sorry, please try again.</p>" ;
         }
