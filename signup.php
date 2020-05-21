@@ -5,15 +5,12 @@
         <link href="theme.css" rel=stylesheet type="text/css">
 </head>
 <body>
-        <nav><ul>
-                <a href="signin.php">Sign In</a>
-        </ul></nav>       
 <?php
 require("lib.php") ;
 $added = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
 if (isset($_POST["click"])){
         if ($added === TRUE) {
-                echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
+                echo "<ul><a href=\"signin.php\">User account successfully created! Click here to sign in.</a></ul>" ;
         }
         else {
                 echo "<p>  Sorry, please try again.</p>" ;
