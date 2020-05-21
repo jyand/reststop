@@ -6,7 +6,7 @@ require("lib.php") ;
 require("logout.php") ;
 require("search.php") ;
 if (isset($_SESSION["email"])) {
-        echo "<title>Welcome, {$_SESSION['email']}</title>"
+        echo "<title>Welcome, {$_SESSION['email']}</title>" ;
         if (dbconnect() !== FALSE) {
                 postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
         }
