@@ -72,7 +72,7 @@ function dbsearch($bname, $zip) {
 # js code in the page ensure correct data and that no forms are blank
 function postreview(...$inputs) {
         // fix this: business data inserts into business but rating and haspublic go into review
-        $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip) VALUES("
+        $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip) VALUES(" ;
         foreach ($input as $temp) {
                 $temp = addslashes($temp) ;
                 $mysqlstr .= "{$temp}, " ;
