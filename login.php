@@ -1,6 +1,6 @@
 <?php
 require_once("cred.php");
-$user = addslashes(trim($_POST["email"])) ;
+$webuser = addslashes(trim($_POST["email"])) ;
 $key = md5(trim($_POST["password"])) ;
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -8,7 +8,7 @@ if ($conn->connect_error) {
         echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
 }
 else {
-        $mysqlstr = "SELECT * FROM User WHERE Email = '{$user}' AND Password = '{$key}'" ;
+        $mysqlstr = "SELECT * FROM User WHERE Email = '{$webuser}' AND Password = '{$key}'" ;
         $result = $conn->query($mysqlstr) ;
         if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc() ;
