@@ -56,5 +56,44 @@ function useradd($email, $password, $confirm) {
                 return FALSE ;
         }
 }
+# query the database for results based on search terms in forms
+# a keyword search with one or more characters can be used for the business
+# the zip code must be set to obtain results
+function dbsearch($bname, $zip) {
+include_once("cred.php");
+        $conn = new mysqli($host, $user, $pass, $db);
+        if ($conn->connect_error) {
+                die('<p class="error">sorry!</p>') ;
+                echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
+        }
+        else {
+                $mysql = "SELECT * FROM Zip WHERE Name = '{$zip}'" ;
+        }
+        if (strlen($bname) > 0) {
+                $term = preg_replace("/ /", "%", $bname) ;
+                $term = "%" . $term . "%" ;
+                $mysqlstr .= " AND Name LIKE '{$bname}'" ;
+        }
+        return $conn->query($mysqlstr) ;
+}
+
+# inserts record into the database when a user posts a review
+# js code in the page ensure correct data and that no forms are blank
+function postreview(...$inputs) {
+include_once("cred.php");
+        $conn = new mysqli($host, $user, $pass, $db);
+        if ($conn->connect_error) {
+                die('<p class="error">sorry!</p>') ;
+                echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
+        }
+        else {
+                $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip) VALUES(" ;
+                foreach ($input as $temp) {
+                        $temp = addslashes($temp) ;
+                        $mysqlstr .= "{$temp}, " ;
+                }
+                $mysqlstr .= ") ;" ;
+        }
+}
 
 ?>

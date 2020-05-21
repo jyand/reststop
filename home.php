@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"/>
+        <link href="theme.css" rel=stylesheet type="text/css">
+        <title>Home Page</title>
+</head>
 <?php
-require("signin.php") ;
 require("logout.php") ;
 require("search.php") ;
-if (isset($_SESSION["UID"])) {
+if (isset($_SESSION["user"])) {
         session_start() ;
-        echo "<title>Welcome, {$_SESSION['UID']}</title>" ;
-        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
+        echo "<p>Welcome, {$_SESSION['user']}</p>" ;
+#        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
 }
 else {
-        echo "<title>Please log in.</title>" ;
+        echo "<p>Please log in.</p>" ;
 }
 ?>
-        <link href="theme.css" rel=stylesheet type="text/css">
-</head>
 <body>
-	<form action="" method="POST">
+	<form action="logout.php" method="POST">
 		<input type="submit" value="logout" />
 	</form></br></br>
         <h1>Help others find a public bathroom by contributing:</h1>

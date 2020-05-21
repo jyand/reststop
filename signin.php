@@ -9,7 +9,7 @@
         <nav><ul>
                 <a href="signup.php">Sign Up</a>
         </ul></nav></br>       
-                <form method="POST" action="">
+                <form method="POST" action="home.php">
                 <label for="login">
                         <p>Email: <input type="text" id="email" name="email">
                         Password: <input type="password" id="password" name="password"></p>
@@ -31,8 +31,8 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
         $result = $conn->query($mysqlstr) ;
         if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc() ;
-                $_SESSION["UID"] = $row["UID"] ;
-                header("Location: home.php") ;
+                $_SESSION["user"] = $row["Email"] ;
+                header("Location: http://35.225.31.193/home.php") ;
         }
         else {
                 die("<p>Please enter valid login credentials.</p>") ;
