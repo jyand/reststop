@@ -1,7 +1,7 @@
 <?php
-require_once("cred.php");
 $webuser = addslashes(trim($_POST["email"])) ;
 $key = md5(trim($_POST["password"])) ;
+require_once("cred.php");
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
         die('<p class="error">Sorry!</p>') ;
