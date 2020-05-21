@@ -33,7 +33,7 @@ else {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']} Public Bathroom?: " ;
                                 $qry = "SELECT HasPublic from Review WHERE '{$row['BID']}' = 'Review.BID'" ;
                                 $bool = $conn->query($qry) ;
-                                switch($bool){
+                                switch($bool["HasPublic"]){
                                 case 0:
                                         echo "NO</p>" ;
                                 case 1:
