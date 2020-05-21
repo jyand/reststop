@@ -6,10 +6,10 @@ if ($conn->connect_error) {
         echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
 }
 else {
-        if(isset($_POST["zip"])) {
-                $mysql = "SELECT * FROM Zip WHERE Zip = '{$_POST['zip']}'" ;
-                if(isset($_POST["bname"])) {
-                        $word = addslashes($_POST["bname"]) ;
+        if(isset($_GET["zip"])) {
+                $mysql = "SELECT * FROM Zip WHERE Zip = '{$_GET['zip']}'" ;
+                if(isset($_GET["bname"])) {
+                        $word = addslashes($_GET["bname"]) ;
                         $term = preg_replace("/ /", "%", $word) ;
                         $term = "%" . $term . "%" ;
                         $mysqlstr .= " AND Name LIKE '{$word}'" ;
