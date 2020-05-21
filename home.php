@@ -3,13 +3,12 @@
 <head><meta charset="utf-8"/>
 <?php
 require("lib.php") ;
+require("login.php") ;
 require("logout.php") ;
 require("search.php") ;
-if (isset($_SESSION["email"])) {
-        echo "<title>Welcome, {$_SESSION['email']}</title>" ;
-        if (dbconnect() !== FALSE) {
-                postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
-        }
+if (isset($_SESSION["user"])) {
+        echo "<title>Welcome, {$_SESSION['user']}</title>" ;
+        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
 }
 else {
         echo "<title>Please log in.</title>" ;
@@ -24,10 +23,10 @@ else {
         <h1>Help others find a public bathroom by contributing:</h1>
 	<form action="home.php" method="POST">
 		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool"/></p>
-		<p>Name of Store: <input type="text" id="bname" name="bname"/></p>
+		<p>Name of Store: <input type="text" id="name" name="name"/></p>
 		<p>Address: <input type="text" id="addr" name="addr"/></p>
 		<p>City: <input type="text" id="city" name ="city"/></p>
-		<p>Zip Code: <input type="number" id="zip" name="zip"/></p>
+		<p>Zip Code: <input type="number" id="zipcode" name="zipcode"/></p>
                 <p><input type="submit" value="Submit a review!"></p>
 	</form>
         <header><h2>Find a Public Bathroom</h2></header>
