@@ -6,8 +6,8 @@
 </head>
 <?php
 #require("lib.php") ;
+session_start() ;
 if (isset($_SESSION["user"])) {
-        session_start() ;
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
 #        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
 }
