@@ -11,7 +11,7 @@
 <?php
 require("lib.php") ;
 $added = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
-if (isset($added)){
+if (isset($_POST["click"])){
         if ($added === TRUE) {
                 echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
         }
@@ -32,7 +32,7 @@ if (isset($added)){
                         Email Address: <input type="text" id="email" name="email" required>
                         Password: <input type="password" id="password" name="password" required>
                         Confirm Password: <input type="password" id="confirm" name="confirm" required>
-                        <p><input type="submit" value="create your account"></p>
+                        <p><input type="submit" id="click" name="click" value="create your account"></p>
                 </label>
                 </label></p>
                 </form>
