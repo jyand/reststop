@@ -87,12 +87,12 @@ function postreview(...$inputs) {
                 echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
         }
         else {
-                $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip, HasPublic) VALUES(" ;
+                $mysqlstr = "INSERT INTO Business (Name, Address, City, Zip, State) VALUES(" ;
                 foreach ($input as $temp) {
                         $temp = addslashes($temp) ;
-                        $mysqlstr .= "{$temp}, " ;
+                        $mysqlstr .= "'{$temp}', " ;
                 }
-                $mysqlstr .= ")" ;
+                $mysqlstr .= "'NJ')" ;
         }
         $conn->query($mysqlstr) ;
 }
