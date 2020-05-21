@@ -5,11 +5,13 @@
         <title>Home Page</title>
 </head>
 <?php
-#require("lib.php") ;
+require("lib.php") ;
 session_start() ;
 if (isset($_SESSION["user"])) {
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
-#        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
+        if (isset($_POST["click"])){
+                postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
+        }
 }
 else {
         echo "<p>Please log in.</p>" ;
@@ -21,12 +23,12 @@ else {
 	</form></br></br>
         <h1>Help others find a public bathroom by contributing:</h1>
 	<form action="" method="POST">
-		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool"/></p>
-		<p>Name of Store: <input type="text" id="name" name="name"/></p>
-		<p>Address: <input type="text" id="addr" name="addr"/></p>
-		<p>City: <input type="text" id="city" name ="city"/></p>
-		<p>Zip Code: <input type="number" id="zipcode" name="zipcode"/></p>
-                <p><input type="submit" value="Submit a review!"></p>
+		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool" required/></p>
+		<p>Name of Store: <input type="text" id="name" name="name" required/></p>
+		<p>Address: <input type="text" id="addr" name="addr" required/></p>
+		<p>City: <input type="text" id="city" name ="city" required/></p>
+		<p>Zip Code: <input type="number" id="zipcode" name="zipcode" required/></p>
+                <p><input type="submit" id="click" name="click" value="Submit a review!"></p>
 	</form>
         <header><h2>Find a Public Bathroom</h2></header>
         <main>
