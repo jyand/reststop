@@ -6,19 +6,19 @@
 </head>
 <body>
         <nav><ul>
-                <a href="signin.php">Sign In</a>
+                <a href="signin.html">Sign In</a>
                 <a href="signup.php">Create Account</a>
-                </ul></nav></br>       
+        </ul></nav></br>       
         <header><h1>Find a Public Bathroom</h1></header>
         <main>
                 <form method="GET" action="search.php">
                 <label for="search">
                         <p>Store: <input type="text" id="bname" name="bname">
-                        Zip Code: <input type="text" id="zip" name="zip"></p>
+                        Zip Code: <input type="text" id="zip" name="zip" required></p>
                         <p><input type="submit" value="search your location"></p>
                 </label>
                 </form></br>
-        <p><img src="img/br.jpeg" width="170" height="200"></p>
+                <p><img src="img/br.jpeg" width="170" height="200"></p>
         </main>
         <footer>&copy;Copyright 2020 - John DeSalvo</footer>
 </body>

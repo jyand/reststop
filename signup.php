@@ -5,6 +5,9 @@
         <link href="theme.css" rel=stylesheet type="text/css">
 </head>
 <body>
+        <nav><ul>
+                <a href="signin.html">Sign In</a>
+        </ul></nav></br>       
         <header><h1>Create an Account</h1></header>
         <main>
                 <form method="POST" action="signup.php">

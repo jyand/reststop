@@ -5,7 +5,7 @@
 # The purpose is to abstract details of back-end operations from the user.
 
 function dbconnect() {
-require_once("cred.php");
+include_once("cred.php");
         $conn= new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
                 die('<p class="error">Sorry!</p>') ;
@@ -42,7 +42,7 @@ function useradd($email, $password) {
         if (dbconnect() !== FALSE) {
                 $password = md5(trim($password), TRUE) ;
                 $joindate = date("Y-m-d") ;
-                $mysqlstr = "INSERT INTO Users (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate})" ;
+                $mysqlstr = "INSERT INTO Users (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate}) ;" ;
         }
         return $conn->query($mysqlstr) ;
 }
@@ -59,6 +59,9 @@ function dbsearch($bname, $zip) {
                 $term = "%" . $term . "%" ;
                 $mysqlstr .= " AND Name LIKE '{$bname}'" ;
         }
+        if (isset($mysqlstr)) {
+                $mysqlstr .= ";"
+        }
         return $conn->query($mysqlstr) ;
 }
 
@@ -66,10 +69,12 @@ function dbsearch($bname, $zip) {
 # js code in the page ensure correct data and that no forms are blank
 function postreview(...$inputs) {
         // fix this: business data inserts into business but rating and haspublic go into review
-        $mysqlstr = "INSERT INTO"
+        $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip) VALUES("
         foreach ($input as $temp) {
+                $temp = addslashes($temp) ;
                 $mysqlstr .= "{$temp}, " ;
         }
+        $mysqlstr .= ") ;" ;
 }
 
 ?>
