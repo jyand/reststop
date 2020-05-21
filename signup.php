@@ -8,6 +8,22 @@
         <nav><ul>
                 <a href="signin.html">Sign In</a>
         </ul></nav></br>       
+<?php
+require("lib.php") ;
+include_once("cred.php");
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+        die('<p class="error">Sorry!</p>') ;
+        echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
+}
+$validpw = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
+if ($validpw === TRUE) {
+        echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
+}
+else {
+        echo "<p>Sorry, please try again.</p>" ;
+}
+?>
         <header><h1>Create an Account</h1></header>
         <main>
                 <form method="POST" action="">
@@ -25,17 +41,6 @@
                 </label></p>
                 </form>
                 <p>Once you sign up you can start posting.</p>
-<?php
-require("lib.php") ;
-$connected = dbconnect() ;
-$validpw = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
-if ($validpw === TRUE && $connected === TRUE) {
-        echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
-}
-else {
-        echo "<p>Sorry, please try again.</p>" ;
-}
-?>
         </main>
 </body>
 </html>

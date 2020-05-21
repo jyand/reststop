@@ -8,9 +8,9 @@ function dbconnect() {
 include_once("cred.php");
         $conn = new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
-                die('<p class="error">Sorry!</p>') ;
-                echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
-                return FALSE ;
+                die('<p class="error">sorry!</p>') ;
+                echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
+                return false ;
         }
         else {
                 return TRUE ;
