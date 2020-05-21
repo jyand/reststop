@@ -9,12 +9,12 @@ else {
         if(isset($_GET["zip"])) {
 
                 $mysqlstr = "SELECT * FROM Business WHERE Zip = '{$_GET['zip']}'" ;
-#                if(isset($_GET["bname"])) {
-#                        $word = addslashes($_GET["bname"]) ;
-#                        $term = preg_replace("/ /", "%", $word) ;
-#                        $term = "%" . $term . "%" ;
-#                        $mysqlstr .= " AND Name LIKE '{$term}'" ;
-#                }
+                if(isset($_GET["bname"])) {
+                        $word = addslashes($_GET["bname"]) ;
+                        $term = preg_replace("/ /", "%", $word) ;
+                        $term = "%" . $term . "%" ;
+                        $mysqlstr .= " AND Name LIKE '{$term}'" ;
+                }
                 $result = $conn->query($mysqlstr) ;
                 if ($result->num_rows > 0) {
                         foreach ($result as $row) {
