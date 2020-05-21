@@ -43,7 +43,13 @@ function useradd($email, $password, $confirm) {
                 $password = md5(trim($password), FALSE) ;
                 $joindate = date("Y-m-d") ;
                 $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate}) ;" ;
-                return TRUE ;
+                if (isset($conn)) {
+                        $conn->query($mysqlstr) ;
+                        return TRUE ;
+                }
+                else {
+                        return FALSE ;
+                }
         }
         else {
                 return FALSE ;
