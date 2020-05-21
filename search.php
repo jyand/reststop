@@ -34,7 +34,7 @@ else {
                                 $qry = "SELECT * from Review WHERE '{$row['BID']}' = 'Review.BID'" ;
                                 $review = $conn->query($qry) ;
                                 $bool = $review->fetch_assoc() ;
-                                switch($bool['HasPublic']){
+                                switch($bool["HasPublic"]){
                                 case 0:
                                         echo "NO</p>" ;
                                 case 1:
