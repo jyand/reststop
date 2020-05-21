@@ -30,7 +30,7 @@ require("lib.php") ;
 $connected = dbconnect() ;
 $validpw = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
 if ($validpw === TRUE && $connected === TRUE) {
-        echo "<ul><a href="signin.html">User account successfully created! Click here to sign in.</a></ul>" ;
+        echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
 }
 else {
         echo "<p>Sorry, please try again.</p>" ;
