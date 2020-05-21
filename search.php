@@ -17,7 +17,7 @@ else {
 #                }
                 $result = $conn->query($mysqlstr) ;
                 if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_asssoc()) {
+                        foreach ($result as $row) {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
                         }
                 }
