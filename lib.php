@@ -87,7 +87,7 @@ include_once("cred.php");
                 echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
         }
         else {
-                $mysqlstr = "INSERT INTO Business (HasPUblic, Name, Address, City, State, Zip) VALUES(" ;
+                $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip, HasPublic) VALUES(" ;
                 foreach ($input as $temp) {
                         $temp = addslashes($temp) ;
                         $mysqlstr .= "{$temp}, " ;
