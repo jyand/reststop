@@ -21,10 +21,10 @@ function validform(){
         }
 }
 </script>
-                <form method="GET" action="search.php">
+                <form method="GET" action="search.php" onsubmit="return validform()">
                 <label for="search">
                         <p>Store Name: <input type="text" id="bname" name="bname">
-                        Zip Code: <input type="number" id="zip" name="zip" onsubmit="return validform()" required></p>
+                        Zip Code: <input type="number" id="zip" name="zip" required></p>
                         <p><input type="submit" value="search your location"></p>
                 </label>
                 </form></br>
