@@ -9,13 +9,13 @@ require("lib.php") ;
 session_start() ;
 if (isset($_SESSION["user"])) {
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
-        if (isset($_POST["click"])){
-                postreview($_POST["name"], $_POST["addr"], $_POST["city"], $_POST["zipcode"]) ;
-        }
 }
 else {
         echo "<p>Please log in.</p>" ;
 }
+        if (isset($_POST["name"]) && isset($_POST["addr"]) && isset($_POST["city"]) && isset($_POST["zipcode"])) {
+                postreview($_POST["name"], $_POST["addr"], $_POST["city"], $_POST["zipcode"]) ;
+        }
 ?>
 <body>
 	<form action="logout.php" method="POST">
