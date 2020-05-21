@@ -5,13 +5,14 @@
 require("signin.php") ;
 require("logout.php") ;
 require("search.php") ;
-#if (isset($_SESSION["UID"])) {
-#        echo "<title>Welcome, {$_SESSION['user']}</title>" ;
-#        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
-#}
-#else {
-#        echo "<title>Please log in.</title>" ;
-#}
+if (isset($_SESSION["UID"])) {
+        session_start() ;
+        echo "<title>Welcome, {$_SESSION['UID']}</title>" ;
+        postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
+}
+else {
+        echo "<title>Please log in.</title>" ;
+}
 ?>
         <link href="theme.css" rel=stylesheet type="text/css">
 </head>
