@@ -6,7 +6,7 @@
 </head>
 <body>
         <nav><ul>
-                <a href="signin.html">Sign In</a>
+                <a href="signin.php">Sign In</a>
         </ul></nav></br>       
 <?php
 require("lib.php") ;
