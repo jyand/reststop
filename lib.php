@@ -80,7 +80,7 @@ include_once("cred.php");
 # inserts record into the database when a user posts a review
 # js code in the page ensure correct data and that no forms are blank
 function postreview(...$inputs) {
-include_once("cred.php");
+        include_once("cred.php");
         $conn = new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
                 die('<p class="error">sorry!</p>') ;
@@ -94,6 +94,7 @@ include_once("cred.php");
                 }
                 $mysqlstr .= ")" ;
         }
+        $conn->query($mysqlstr) ;
 }
 
 ?>
