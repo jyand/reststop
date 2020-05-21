@@ -10,7 +10,6 @@
                 <a href="signup.php">Sign Up</a>
         </ul></nav></br>       
 <?php
-require("home.php") ;
 require_once("cred.php");
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
