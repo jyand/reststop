@@ -12,19 +12,19 @@
         <main>
                 <form method="POST" action="">
                 <p>Password must contain at least:</p>
-                <ul><li><p>one lowercase letter</p></ul>
+                <p>one lowercase letter</p>
                 <p>one uppercase letter</p>
-                <p>one number</p></li>
+                <p>one number</p>
                 <p>Any whitespace will  be ignored.</p>
                 <p><label for="create">
                         Email Address: <input type="text" id="email" name="email" required>
                         Password: <input type="password" id="password" name="password" required>
                         Confirm Password: <input type="password" id="confirm" name="confirm" required>
+                        <p><input type="submit" value="create your account"></p>
+                </label>
                 </label></p>
                 </form>
                 <p>Once you sign up you can start posting.</p>
-                </br>
-                </br>
 <?php
 require("lib.php") ;
 $connected = dbconnect() ;
@@ -37,6 +37,5 @@ else {
 }
 ?>
         </main>
-        <footer>&copy;Copyright 2020 - John DeSalvo</footer>
 </body>
 </html>
