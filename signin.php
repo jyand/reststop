@@ -26,6 +26,7 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
                 session_start() ;
                 $_SESSION["user"] = $row["Email"] ;
                 header("Location: home.php") ;
+                $conn->close() ;
                 die() ;
         }
         else {
