@@ -1,6 +1,6 @@
 <?php
 require ("lib.php") ;
-include_once("cred.php");
+require_once("cred.php");
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
         die('<p class="error">Sorry!</p>') ;

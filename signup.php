@@ -10,21 +10,12 @@
         </ul></nav></br>       
 <?php
 require("lib.php") ;
-include_once("cred.php");
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-        die('<p class="error">Sorry!</p>') ;
-        echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
-}
 $added = useradd($_POST["email"], $_POST["password"], $_POST["confirm"]) ;
 if ($added === TRUE) {
         echo "<ul><a href=\"signin.html\">User account successfully created! Click here to sign in.</a></ul>" ;
 }
 else {
         echo "<p>Sorry, please try again.</p>" ;
-        if (isset($mysqlstr)){
-                echo "<p>{$mysqlstr}</p>" ;
-        }
 }
 ?>
         <header><h1>Create an Account</h1></header>

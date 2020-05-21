@@ -39,10 +39,16 @@ function passwdcheck($password, $confirmpw) {
 # adds user information to the database, formats and encrypts password
 # email is validated client-side, password is validated server-side
 function useradd($email, $password, $confirm) {
+        require_once("cred.php");
+        $conn = new mysqli($host, $user, $pass, $db);
+        if ($conn->connect_error) {
+                die('<p class="error">Sorry!</p>') ;
+                echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
+        }
         if (passwdcheck($password, $confirm) === TRUE) {
                 $password = md5(trim($password), FALSE) ;
                 $joindate = date("Y-m-d") ;
-                $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate}) ;" ;
+                $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ('{$email}', '{$password}', '{$joindate}') ;" ;
                 return TRUE ;
         }
         else {
