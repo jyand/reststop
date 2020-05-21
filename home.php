@@ -31,9 +31,19 @@ if (isset($_POST["name"]) && isset($_POST["addr"]) && isset($_POST["city"]) && i
 		<p>Zip Code: <input type="number" id="zipcode" name="zipcode"/></p>
                 <p><input type="submit" id="click" name="click" value="Submit a review!"></p>
 	</form>
+<script type="text/javascript">
+// checks for valid zip code input
+function validform(){
+        var z = document.forms["search"]["zip"].value ;
+        if (z > 99999 || z < 0) {
+                alert("Invalid zip code!") ;
+                return false ;
+        }
+}
+</script>
         <header><h2>Find a Public Bathroom</h2></header>
         <main>
-                <form method="GET" action="search.php">
+                <form name="search" method="GET" action="search.php" onsubmit="return validform()">
                 <label for="search">
                         <p>Store: <input type="text" id="bname" name="bname">
                         Zip Code: <input type="text" id="zip" name="zip"></p>

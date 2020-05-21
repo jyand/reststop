@@ -12,9 +12,10 @@
         <header><h1>Find a Public Bathroom</h1></header>
         <main>
 <script type="text/javascript">
+// checks for valid zip code input
 function validform(){
         var z = document.forms["search"]["zip"].value ;
-        if (z > 99999) {
+        if (z > 99999 || z < 0) {
                 alert("Invalid zip code!") ;
                 return false ;
         }
