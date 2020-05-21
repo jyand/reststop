@@ -20,18 +20,18 @@ else {
         if(isset($_GET["zip"])) {
 
                 # Join tables to append the HasPublic (bathroom) boolean value to the results
-                $mysqlstr = "SELECT * FROM Business INNER JOIN Review ON Review.BID = Business.BID AND Zip = Business.'{$_GET['zip']}'" ;
+                $mysqlstr = "SELECT * FROM Business WHERE Zip = '{$_GET['zip']}'" ;
                 # the name field uses MySQL wildcards for all entries containing all words separated by spaces in the search term
                 if(isset($_GET["bname"])) {
                         $word = addslashes($_GET["bname"]) ;
                         $term = preg_replace("/ /", "%", $word) ;
                         $term = "%" . $term . "%" ;
-                        $mysqlstr .= " AND Business.Name LIKE '{$term}'" ;
+                        $mysqlstr .= " AND Name LIKE '{$term}'" ;
                 }
                 $result = $conn->query($mysqlstr) ;
                 if ($result->num_rows > 0) {
                         foreach ($result as $row) {
-                                echo "<p> Public Bathroom?: {$row['HasPublic']} Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
+                                echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
                         }
                 }
                 else {
