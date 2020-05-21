@@ -15,9 +15,7 @@
 function validform(){
         var z = document.getElementByID("zip").value ;
         var regex = /[0-9]{5}/g ;
-        if (regex.test(z)) {
-        }
-        else {
+        if (!regex.test(z)) {
                 alert("Invalid zip code!") ;
                 return false ;
         }
