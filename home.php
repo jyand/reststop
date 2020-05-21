@@ -2,7 +2,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <?php
-require("login.php") ;
+require("signin.php") ;
 require("logout.php") ;
 require("search.php") ;
 if (isset($_SESSION["UID"])) {
