@@ -25,7 +25,7 @@ if (isset($_POST["click"])) {
 <script type="text/javascript">
 function validemail(){
         var e = document.forms["newuser"]["email"].value ;
-        var regex = new RegExp("[a-z0-9]@[a-z0-9]\\.[a-z]") ;
+        var regex = /[a-z0-9]@[a-z0-9]\.[a-z]/ ;
         if (regex.test(e)) {
                 return true ;
         }
