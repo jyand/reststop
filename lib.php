@@ -75,16 +75,4 @@ function dbsearch($bname, $zip) {
         return $conn->query($mysqlstr) ;
 }
 
-# inserts record into the database when a user posts a review
-# js code in the page ensure correct data and that no forms are blank
-function postreview(...$inputs) {
-        // fix this: business data inserts into business but rating and haspublic go into review
-        $mysqlstr = "INSERT INTO Business (Name, Address, City, State, Zip) VALUES(" ;
-        foreach ($input as $temp) {
-                $temp = addslashes($temp) ;
-                $mysqlstr .= "{$temp}, " ;
-        }
-        $mysqlstr .= ") ;" ;
-}
-
 ?>
