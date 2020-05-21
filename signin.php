@@ -24,7 +24,7 @@ if ($conn->connect_error) {
         die('<p class="error">Sorry!</p>') ;
         echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
 }
-if (isset(["password"]) && isset($_POST["email"])) {
+if (isset($_POST["password"]) && isset($_POST["email"])) {
         $webuser = addslashes(trim($_POST["email"])) ;
         $key = md5(trim($_POST["password"])) ;
         $mysqlstr = "SELECT * FROM User WHERE Email = '{$webuser}' AND Password = '{$key}'" ;
