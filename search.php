@@ -20,7 +20,7 @@ else {
         if(isset($_GET["zip"])) {
 
                 # Join tables to append the HasPublic (bathroom) boolean value to the results
-                $mysqlstr = "SELECT * FROM Business, Review WHERE Zip = Business.{$_GET['zip']} AND Business.BID = Review.BID" ;
+                $mysqlstr = "SELECT * FROM Business, Review WHERE Zip = Business.'{$_GET['zip']}' AND Business.'BID' = Review.'BID'" ;
                 # the name field uses MySQL wildcards for all entries containing all words separated by spaces in the search term
                 if(isset($_GET["bname"])) {
                         $word = addslashes($_GET["bname"]) ;
