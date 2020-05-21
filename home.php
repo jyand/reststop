@@ -2,11 +2,10 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <?php
-require("lib.php") ;
 require("login.php") ;
 require("logout.php") ;
 require("search.php") ;
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["UID"])) {
         echo "<title>Welcome, {$_SESSION['user']}</title>" ;
         postreview($_POST["bool"], $_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zip"], "NJ") ;
 }
@@ -21,7 +20,7 @@ else {
 		<input type="submit" value="logout" />
 	</form></br></br>
         <h1>Help others find a public bathroom by contributing:</h1>
-	<form action="home.php" method="POST">
+	<form action="" method="POST">
 		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool"/></p>
 		<p>Name of Store: <input type="text" id="name" name="name"/></p>
 		<p>Address: <input type="text" id="addr" name="addr"/></p>
