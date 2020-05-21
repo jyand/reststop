@@ -23,7 +23,7 @@ else {
 	</form></br></br>
         <h1>Help others find a public bathroom by contributing:</h1>
 	<form action="" method="POST">
-		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool" required/></p>
+		<p>has a public bathroom?: <input type="checkbox" id="bool" name ="bool" value="1", required/></p>
 		<p>Name of Store: <input type="text" id="name" name="name" required/></p>
 		<p>Address: <input type="text" id="addr" name="addr" required/></p>
 		<p>City: <input type="text" id="city" name ="city" required/></p>
