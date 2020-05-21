@@ -12,12 +12,12 @@ else {
                         $word = addslashes($_GET["bname"]) ;
                         $term = preg_replace("/ /", "%", $word) ;
                         $term = "%" . $term . "%" ;
-                        $mysqlstr .= " AND Name LIKE '{$word}'" ;
+                        $mysqlstr .= " AND Name LIKE '{$term}'" ;
                 }
-                $results = $conn->query($mysqlstr) ;
-                if ($results->num_rows > 0) {
+                $result = $conn->query($mysqlstr) ;
+                if ($result->num_rows > 0) {
                         while ($row = $results->fetch_asssoc()) {
-                                echo "<p>Public Bathroom?: {$row['HasPublic']} Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
+                                echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
                         }
                 }
                 else {
