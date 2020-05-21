@@ -26,5 +26,5 @@ else {
                 }
         }
 }
-//$conn->close() ;
+$conn->close() ;
 ?>
