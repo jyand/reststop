@@ -46,9 +46,10 @@ function useradd($email, $password, $confirm) {
                 echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
         }
         if (passwdcheck($password, $confirm) === TRUE) {
-                $password = md5(trim($password), FALSE) ;
+                $password = md5(trim($password)) ;
                 $joindate = date("Y-m-d") ;
-                $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ('{$email}', '{$password}', '{$joindate}') ;" ;
+                $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ('{$email}', '{$password}', '{$joindate}')" ;
+                $conn->query($mysqlstr) ;
                 return TRUE ;
         }
         else {
