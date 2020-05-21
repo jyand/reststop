@@ -12,7 +12,7 @@ if (isset($_SESSION["email"])) {
         }
 }
 else {
-        echo "<title>Please log in.</title>"
+        echo "<title>Please log in.</title>" ;
 }
 ?>
         <link href="theme.css" rel=stylesheet type="text/css">
