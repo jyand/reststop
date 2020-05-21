@@ -20,25 +20,10 @@ if (isset($_POST["click"])) {
                 echo "<p>  Sorry, please try again.</p>" ;
         }
 }
-# JS code below does client-side password validation
 ?>
-<script type="text/javascript">
-function validemail(){
-        var e = document.forms["newuser"]["email"].value ;
-        var regex = /[a-z0-9]+{@}[a-z0-9]+\.[a-z]+/g ;
-        if (regex.test(e)) {
-                return true ;
-        }
-        else {
-                alert("Please enter a valid email address!") ;
-                return false ;
-        }
-}
-
-</script>
         <header><h1>Create an Account</h1></header>
         <main>
-                <form name="newuser" method="POST" action="" onsubmit="return validemail()">
+                <form name="newuser" method="POST" action="">
                 <p>Password must contain at least:</p>
                 <p>one lowercase letter</p>
                 <p>one uppercase letter</p>

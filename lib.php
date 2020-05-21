@@ -6,7 +6,7 @@
 function passwdcheck($password, $confirmpw) {
         $regex = array("/[A-Z]/", "/[0-9]/", "/[a-z]/") ;
         $minchar = 8 ;
-        if (strlen($password) >= $minchar && md5($password) === ($confirmpw)) {
+        if (strlen($password) >= $minchar && md5($password) === md5($confirmpw)) {
                 $valid = TRUE ;
                 foreach ($regex as $temp) {
                         if (!preg_match($temp, $password)) {
@@ -22,7 +22,7 @@ function passwdcheck($password, $confirmpw) {
 }
 
 # adds user information to the database, formats and encrypts password
-# email is validated client-side, password is validated server-side
+# email is formatted for security in the web page
 function useradd($email, $password, $confirm) {
         require_once("cred.php");
         $conn = new mysqli($host, $user, $pass, $db);
