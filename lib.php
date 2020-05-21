@@ -79,7 +79,7 @@ include_once("cred.php");
 
 # inserts record into the database when a user posts a review
 # js code in the page ensure correct data and that no forms are blank
-function postreview(...$inputs) {
+function postreview($name, $address, $city, $zip) {
         include_once("cred.php");
         $conn = new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
@@ -87,12 +87,7 @@ function postreview(...$inputs) {
                 echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
         }
         else {
-                $mysqlstr = "INSERT INTO Business (Name, Address, City, Zip, State) VALUES(" ;
-                foreach ($input as $temp) {
-                        $temp = addslashes($temp) ;
-                        $mysqlstr .= "'{$temp}', " ;
-                }
-                $mysqlstr .= "'NJ')" ;
+                $mysqlstr = "INSERT INTO Business (Name, Address, City, Zip, State) VALUES('{$name}', '{$address}', '{$city}', '{$zip}', 'NJ'" ;
                 $conn->query($mysqlstr) ;
         }
 }

@@ -10,7 +10,7 @@ session_start() ;
 if (isset($_SESSION["user"])) {
         echo "<p>Welcome, {$_SESSION['user']}</p>" ;
         if (isset($_POST["click"])){
-                postreview($_POST["bname"], $_POST["addr"], $_POST["city"], $_POST["zipcode"]) ;
+                postreview($_POST["name"], $_POST["addr"], $_POST["city"], $_POST["zipcode"]) ;
         }
 }
 else {
