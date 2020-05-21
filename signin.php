@@ -23,9 +23,9 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
         $result = $conn->query($mysqlstr) ;
         if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc() ;
-                session_start() ;
                 $_SESSION["user"] = $row["Email"] ;
-                header("Location: http://35.225.31.193/home.php") ;
+                header("Location: home.php") ;
+                die() ;
         }
         else {
                 die("<p>Please enter valid login credentials.</p>") ;
