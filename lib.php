@@ -6,12 +6,15 @@
 
 function dbconnect() {
 include_once("cred.php");
-        $conn= new mysqli($host, $user, $pass, $db);
+        $conn = new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
                 die('<p class="error">Sorry!</p>') ;
                 echo "<p>We are having connection issues.</p><p>Please try again later.</p>" ;
+                return FALSE ;
         }
-        return $conn->connect_error ;
+        else {
+                return TRUE ;
+        }
 }
 
 # validates the password server-side when creating a new user account
@@ -35,16 +38,16 @@ function passwdcheck($password, $confirmpw) {
 
 # adds user information to the database, formats and encrypts password
 # email is validated client-side, password is validated server-side
-function useradd($email, $password) {
-        if (passwdcheck($password)) {
+function useradd($email, $password, $confirm) {
+        if (passwdcheck($password, $confirm) === TRUE) {
+                $password = md5(trim($password), FALSE) ;
+                $joindate = date("Y-m-d") ;
+                $mysqlstr = "INSERT INTO User (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate}) ;" ;
+                return TRUE ;
+        }
+        else {
                 return FALSE ;
         }
-        if (dbconnect() !== FALSE) {
-                $password = md5(trim($password), TRUE) ;
-                $joindate = date("Y-m-d") ;
-                $mysqlstr = "INSERT INTO Users (Email, Password, JoinDate) VALUES ({$email}, {$password}, {$joindate}) ;" ;
-        }
-        return $conn->query($mysqlstr) ;
 }
 
 # query the database for results based on search terms in forms
@@ -60,7 +63,7 @@ function dbsearch($bname, $zip) {
                 $mysqlstr .= " AND Name LIKE '{$bname}'" ;
         }
         if (isset($mysqlstr)) {
-                $mysqlstr .= ";"
+                $mysqlstr .= ";" ;
         }
         return $conn->query($mysqlstr) ;
 }
