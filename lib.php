@@ -4,19 +4,6 @@
 # 'Library': function wrapper for routines used in pages
 # The purpose is to abstract details of back-end operations from the user.
 
-function dbconnect() {
-include_once("cred.php");
-        $conn = new mysqli($host, $user, $pass, $db);
-        if ($conn->connect_error) {
-                die('<p class="error">sorry!</p>') ;
-                echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
-                return false ;
-        }
-        else {
-                return TRUE ;
-        }
-}
-
 # validates the password server-side when creating a new user account
 function passwdcheck($password, $confirmpw) {
         $regex = array("/[A-Z]/", "/[0-9]/", "/[a-z]/") ;
@@ -78,10 +65,9 @@ include_once("cred.php");
 }
 
 # inserts record into the database when a user posts a review
-# js code in the page ensure correct data and that no forms are blank
+# js code in the page ensures correct data
+# the html forms are all required so this ensures that no forms are blank
 function postreview($name, $address, $city, $zip) {
-        //make it so that only admin can add businesses
-        // logged in users can give review
         require_once("cred.php");
         $conn = new mysqli($host, $user, $pass, $db);
         if ($conn->connect_error) {
@@ -91,6 +77,20 @@ function postreview($name, $address, $city, $zip) {
         else {
                 $mysqlstr = "INSERT INTO Business (Name, Address, City, Zip, State) VALUES('{$name}', '{$address}', '{$city}', '{$zip}', 'NJ'" ;
                 $conn->query($mysqlstr) ;
+        }
+}
+
+# dbconnect() is an unused function since it ended up being more efficient to just connect to the database when needed
+function dbconnect() {
+include_once("cred.php");
+        $conn = new mysqli($host, $user, $pass, $db);
+        if ($conn->connect_error) {
+                die('<p class="error">sorry!</p>') ;
+                echo "<p>we are having connection issues.</p><p>please try again later.</p>" ;
+                return false ;
+        }
+        else {
+                return TRUE ;
         }
 }
 
