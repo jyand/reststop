@@ -34,6 +34,7 @@ else {
                                 echo "<p>Store: {$row['Name']} Address: {$row['Address']} {$row['City']} {$row['State']}</p>" ;
                         }
                 }
+                unset($row) ;
                 else {
                         echo "<p>Sorry, we could not find anything.</p>" ;
                 }

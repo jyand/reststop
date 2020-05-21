@@ -1,6 +1,4 @@
 <?php
-//$conn->close() ; in page script after any funcs using mysql execute
-
 # 'Library': function wrapper for routines used in pages
 # The purpose is to abstract details of back-end operations from the user.
 
@@ -8,7 +6,7 @@
 function passwdcheck($password, $confirmpw) {
         $regex = array("/[A-Z]/", "/[0-9]/", "/[a-z]/") ;
         $minchar = 8 ;
-        if (strlen($password) >= $minchar && $password === $confirmpw) {
+        if (strlen($password) >= $minchar && md5($password) === ($confirmpw)) {
                 $valid = TRUE ;
                 foreach ($regex as $temp) {
                         if (!preg_match($temp, $password)) {
