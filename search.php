@@ -9,12 +9,10 @@ else {
         if(isset($_POST["zip"])) {
                 $mysql = "SELECT * FROM Zip WHERE Zip = '{$_POST['zip']}'" ;
                 if(isset($_POST["bname"])) {
-                $searchname = addslashes($_POST["bname"]) ;
-                }
-                if (isset($_POST["bname"]) {
-                        $term = preg_replace("/ /", "%", $bname) ;
+                        $word = addslashes($_POST["bname"]) ;
+                        $term = preg_replace("/ /", "%", $word) ;
                         $term = "%" . $term . "%" ;
-                        $mysqlstr .= " AND Name LIKE '{$bname}'" ;
+                        $mysqlstr .= " AND Name LIKE '{$word}'" ;
                 }
                 $conn->query($mysqlstr) ;
                 if ($results->num_rows > 0) {
