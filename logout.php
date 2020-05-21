@@ -2,5 +2,5 @@
 if (isset($_SESSION["UID"])) {
 session_destroy() ;
 }
-header("Location: signin.html") ; 
+header("Location: signin.php") ; 
 ?>
