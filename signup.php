@@ -35,7 +35,6 @@ if ($validpw === TRUE && $connected === TRUE) {
 else {
         echo "<p>Sorry, please try again.</p>" ;
 }
-}
 ?>
         </main>
         <footer>&copy;Copyright 2020 - John DeSalvo</footer>
