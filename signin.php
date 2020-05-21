@@ -33,22 +33,7 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
                 die("<p>Please enter valid login credentials.</p>") ;
         }
 }
-# the Javascript code below validates email before data can be sent to server
 ?>
-<script type="text/javascript">
-function validemail(){
-        var e = document.forms["login"]["email"].value ;
-        var regex = new RegExp("[a-z0-9]@[a-z0-9]\\.[a-z]") ;
-        if (regex.test(e)) {
-                return true ;
-        }
-        else {
-                alert("Please enter a valid email address!") ;
-                return false ;
-        }
-}
-
-</script>
                 <form method="POST" action="">
                 <label for="login">
                         <p>Email: <input type="text" id="email" name="email">
