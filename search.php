@@ -7,6 +7,7 @@ if ($conn->connect_error) {
 }
 else {
         if(isset($_GET["zip"])) {
+
                 $mysqlstr = "SELECT * FROM Zip WHERE Zip = '{$_GET['zip']}'" ;
 #                if(isset($_GET["bname"])) {
 #                        $word = addslashes($_GET["bname"]) ;
